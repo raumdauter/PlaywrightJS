@@ -16,9 +16,9 @@ test('handle dropdowns', async ({page}) => {
     // await expect(options).toHaveCount(10);
 
     // 2. Check number of options in dropdown - Approach 2
-    const options2 = await page.$$("#country option");
+    //const options2 = await page.$$("#country option");
     //console.log("Number of options in dropdown: " + options2.length);
-    await expect(options2.length).toBe(10);
+    //await expect(options2.length).toBe(10);
 
     // 3. Check presence of value in the dropdown - Approach 1
     // const content = await page.locator("#country").textContent();
@@ -26,7 +26,7 @@ test('handle dropdowns', async ({page}) => {
     // console.log("Print the values in dropdown: " + content);
 
     // 4. Check presence of value in the dropdown - Approach 2 ussing loop
-    const dropdownValues = await page.$$("#country option");
+     /* const dropdownValues = await page.$$("#country option");
     let status = false;
     for(const ddlValue of dropdownValues) {
         console.log(await ddlValue.textContent());
@@ -37,7 +37,19 @@ test('handle dropdowns', async ({page}) => {
             break;
         }
     }
-    expect(status).toBeTruthy();
+    expect(status).toBeTruthy(); */
+
+    // 5. select option from dropdown using loop
+    const dropdownValues = await page.$$("#country option");
+    for(const ddlValue of dropdownValues) {
+        let value = await ddlValue.textContent();
+        let trimmedValue = value.trim();
+        if (trimmedValue.includes('France')) {
+            await page.selectOption("#country", trimmedValue);
+            console.log("Value is present in dropdown: " + trimmedValue);
+            break;
+        }
+    }
 
     await page.waitForTimeout(2000);
 
