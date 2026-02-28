@@ -4,7 +4,7 @@ import { test, expect } from '@playwright/test';
  * 1. .only - CHỈ CHẠY TEST NÀY
  * Dùng khi debug. Playwright sẽ bỏ qua toàn bộ các test khác trong file.
  */
-test.only('Focus test: Chạy duy nhất tôi thôi @debug', async ({ page }) => {
+test('Focus test: Chạy duy nhất tôi thôi @debug', async ({ page }) => {
     await page.goto('https://demo.nopcommerce.com/');
     console.log('Đang debug test này...');
 });

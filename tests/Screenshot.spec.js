@@ -10,7 +10,7 @@ test('Full page screenshot', async ({ page }) => {
     await page.screenshot({ path:'tests/screenshots/' + Date.now() +  'Fullpage.png', fullPage: true });
 });
 
-test.only('Element screenshot', async ({ page }) => {
+test('Element screenshot', async ({ page }) => {
     await page.goto('https://demo.nopcommerce.com/');
     const electronicsLink = page.getByRole('link', { name: 'Electronics' }).nth(1);
     await electronicsLink.screenshot({ path:'tests/screenshots/' + Date.now() +  'Element.png' })

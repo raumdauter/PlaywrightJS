@@ -19,7 +19,7 @@ test('Upload Single File', async ({ page }) => {
     await page.waitForTimeout(2000);
  })
 
- test.only('Upload Multiple Files', async ({ page }) => {
+ test('Upload Multiple Files', async ({ page }) => {
     await page.goto('https://davidwalsh.name/demo/multiple-file-upload.php');
 
     const buttonUpload = page.locator('#filesToUpload');    
