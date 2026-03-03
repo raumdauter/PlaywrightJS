@@ -31,6 +31,17 @@ export default defineConfig({
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
+    // Các tùy chọn:
+    // 'off': Không quay video (mặc định)
+    // 'on': Quay video cho mọi test case
+    // 'retain-on-failure': Chỉ giữ lại video nếu test bị lỗi
+    // 'on-first-retry': Chỉ quay video khi test bị chạy lại lần đầu 
+    //screenshot: 'only-on-failure', // Chỉ chụp ảnh khi test thất bại
+    // Bạn cũng có thể chỉnh kích thước video để tiết kiệm dung lượng
+    // video: {
+    //   mode: 'retain-on-failure',
+    //   size: { width: 640, height: 480 }
+    // }
   },
 
   /* Configure projects for major browsers */
@@ -77,5 +88,6 @@ export default defineConfig({
   //   url: 'http://localhost:3000',
   //   reuseExistingServer: !process.env.CI,
   // },
+// @ts-ignore
 });
 

@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@fixtures/*": ["fixtures/*"],
+      "@pages/*": ["pages/*"],
+      "@data/*": ["test-data/*"],
+      "@utils/*": ["utils/*"]
+    },
+    "allowJs": true,
+    "ignoreDeprecations": "6.0"
+  },
+  "exclude": ["node_modules", "playwright-report"]
+}
