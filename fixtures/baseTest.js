@@ -1,14 +1,17 @@
 const base = require('@playwright/test');
 const { LoginPage } = require('../pages/LoginPage');
-const { DashboardPage } = require('../pages/DashboardPage');
+// const { ProductPage } = require('../pages/ProductPage'); // Thêm các page khác ở đây
 
 exports.test = base.test.extend({
-  // Tự động khởi tạo các trang
+  // Định nghĩa fixture cho LoginPage
   loginPage: async ({ page }, use) => {
     await use(new LoginPage(page));
   },
-  dashboardPage: async ({ page }, use) => {
-    await use(new DashboardPage(page));
-  },
+
+  // Ví dụ thêm fixture cho ProductPage (nếu bạn đã tạo)
+  // productPage: async ({ page }, use) => {
+  //   await use(new ProductPage(page));
+  // },
 });
+
 exports.expect = base.expect;
