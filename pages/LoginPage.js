@@ -17,7 +17,6 @@ class LoginPage {
 
   // 2. Các hành động (Actions) trên trang
   async goto(contextMessage = 'Navigating to Login Page') {
-    
     // log the navigation step
     logger.info(`[Action]: Navigating to ${contextMessage}`);
     // Điều hướng đến trang web (có thể lấy từ config hoặc biến môi trường)
