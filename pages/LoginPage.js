@@ -1,10 +1,13 @@
 const logger = require('../utils/logger'); // Import logger using CommonJS syntax
+const { expect } = require('@playwright/test');
+const {ultimateBasePage} = require('../utils/ultimateBasePage'); // Import ultimateBasePage using CommonJS syntax'
 
-class LoginPage {
+class LoginPage extends ultimateBasePage {
   /**
    * @param {import('@playwright/test').Page} page
    */
   constructor(page) {
+    super(page);  
     this.page = page;
     
     // 1. Định nghĩa các Selectors (Locators)
@@ -26,15 +29,20 @@ class LoginPage {
   async login(username, password, contextMessage = 'login attempt') {
     logger.info(`[Action]: Performing ${contextMessage} with user: "${username}"`);
     // Thực hiện các bước điền form
-    await this.usernameInput.fill(username);
-    await this.passwordInput.fill(password);
-    await this.loginButton.click();
+    await this.typeText(this.usernameInput, username, 'Username Input');
+    await this.typeText(this.passwordInput, password, 'Password Input');
+    await this.clickElement(this.loginButton, 'Login Button');
   }
 
-  async getErrorMessage() {
-    // Hàm bổ trợ để lấy text thông báo lỗi nếu login thất bại
-    return await this.errorMessage.textContent();
-  }
+  // 3. Hàm Xác minh (Verify) dành riêng cho trang này
+  async verifyLoginError(expectedErrorText) {
+    console.log(`[Verify] Kiểm tra thông báo lỗi có chứa: "${expectedErrorText}"`);     
+    // Tận dụng hàm resolve để biến string thành Locator
+    const errorLoc = this.resolve(this.errorMessage);       
+    // Dùng Web-First Assertion để tự động chờ thông báo lỗi xuất hiện
+    await expect(errorLoc, 'Lỗi: Thông báo đăng nhập sai không xuất hiện').toContainText(expectedErrorText);
+    }
+
 }
 
 module.exports = { LoginPage };

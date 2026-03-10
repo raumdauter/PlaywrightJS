@@ -14,9 +14,7 @@ test.describe('Login Functionality', () => {
     logger.info('-- Starting Test: TC02 - User cannot login with invalid credentials --');
     await loginPage.goto();
     await loginPage.login('wrong username', '1234567'); // Mật khẩu sai
-
-    const errorMessage = await loginPage.getErrorMessage();
-    expect(errorMessage).toContain('Invalid Login Credentials.'); // Điều chỉnh theo thông báo lỗi thực tế của ứng dụng
+    await loginPage.verifyLoginError('Invalid Login Credentials.'); // Điều chỉnh theo thông báo lỗi thực tế của ứng dụng
 
     await loginPage.page.waitForTimeout(2000); // Thêm timeout để dễ dàng quan sát kết quả khi chạy test, có thể bỏ sau khi xác nhận test hoạt động đúng
   });
