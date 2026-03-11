@@ -2,15 +2,18 @@ const { test, expect } = require('@fixtures/baseTest');
 const logger = require('../../utils/logger'); // use CommonJS require for the logger
 
 test.describe('Login Functionality', () => {
-  test('TC01: User can login with valid credentials', async ({ loginPage }) => {
+  test.only('TC01: User can login with valid credentials', async ({ loginPage }) => {
     logger.info('-- Starting Test: TC01 - User can login with valid credentials --');
     await loginPage.goto();
     await loginPage.login('admin_example', '123456');
     // Thêm assertion để kiểm tra login thành công, ví dụ: kiểm tra URL hoặc một element đặc trưng sau khi login
-    await expect(loginPage.page).toHaveURL('https://hrm.anhtester.com/erp/desk');
+    //await expect(loginPage.page).toHaveURL('https://hrm.anhtester.com/erp/desk');
+
+    // Hoặc kiểm tra sự xuất hiện của một element đặc trưng sau khi login thành công
+    await loginPage.verifyLoginSuccess('Logged In Successfully.'); // Điều chỉnh theo thông báo thành công thực tế của ứng dụng
   });
 
-  test.only('TC02: User cannot login with invalid credentials', async ({ loginPage }) => {
+  test('TC02: User cannot login with invalid credentials', async ({ loginPage }) => {
     logger.info('-- Starting Test: TC02 - User cannot login with invalid credentials --');
     await loginPage.goto();
     await loginPage.login('wrong username', '1234567'); // Mật khẩu sai

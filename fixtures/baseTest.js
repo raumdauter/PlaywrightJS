@@ -8,6 +8,11 @@ exports.test = base.test.extend({
     await use(new LoginPage(page));
   },
 
+  // DashboardPage
+  dashboardPage: async ({ page }, use) => {
+    await use(new DashboardPage(page));
+  }
+
   // Ví dụ thêm fixture cho ProductPage (nếu bạn đã tạo)
   // productPage: async ({ page }, use) => {
   //   await use(new ProductPage(page));
