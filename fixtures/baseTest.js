@@ -1,7 +1,7 @@
 const base = require('@playwright/test');
 const { LoginPage } = require('../pages/LoginPage');
 const { DashboardPage } = require('../pages/DashboardPage');
-//const { MyAccountSettingPage } = require('../pages/MyAccountSettingPage');
+const { MyAccountSettingPage } = require('../pages/MyAccoutSettingPage');
 
 exports.test = base.test.extend({
   // Định nghĩa fixture cho LoginPage
