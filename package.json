@@ -2,14 +2,17 @@
   "name": "pavan_sdet_playwrightjs",
   "version": "1.0.0",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "test-data:my-account:generate-excel": "node test-data/scripts/generateMyAccountSettingExcel.js"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "",
   "devDependencies": {
     "@playwright/test": "^1.57.0",
-    "@types/node": "^25.0.3"
+    "@types/node": "^25.0.3",
+    "xlsx": "^0.18.5"
   },
   "dependencies": {
     "winston": "^3.19.0"
